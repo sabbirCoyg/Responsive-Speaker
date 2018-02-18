@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Gloria+Hallelujah|Lobster|Pacifico|Shadows+Into+Light" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Optional Bootstrap theme -->
+   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+        <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+        
+        <style>
+             body{
+                background-color: rgb(72,72,72);
+                background: url("pink dust.png");
+            }
+              h1.mrg{
+                 font-size: 40px;
+              
+                text-align: center;
+                color:#FF3855;
+                letter-spacing:0.1em;
+              font-family: 'Shadows Into Light', cursive;
+              font-weight: bolder;
+              font-stretch: ultra-expanded;
+                
+            }
+            
+            #play{
+                margin-right: 10px;
+            }
+            header{
+                background: url("pink dust.png");
+                background-color:rgb(72,72,72);
+                margin-top:0;
+                margin-bottom: 20px;
+                background-size: auto;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                padding-right: 2px;
+                padding-left: 2px;
+                border-radius: 10px;
+                border-color:#FF3855;
+                border-style: outset;
+               
+            }
+            
+            .the-btns2{
+/*            background-image: url("playbtn.png");
+*/            margin-top: 10px;
+width:10%;
+height:10%;
+                        font-size: 20px;
+            background-color:#FF3855 ;
+         border-radius: 10px;
+cursor:pointer;
+border-color:transparent;
+;
+
+        }
+        
+        .the-btns2:hover{
+            box-shadow: 0 12px 16px 0 rgba(255,56,85,0.44), 0 17px 50px 0 rgba(255,56,85,0.39);
+            cursor:pointer;
+        }
+     
+        
+        span.size2{
+            font-size: 1.5em;
+            color:rgb(72,72,72);
+            text-align: center;
+            padding: 4px 0px 0px 0px;
+        }
+       
+        
+            
+            #inpt {
+                 background: url("notebook_@2X.png");
+	width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color:rgb(72,72,72) ;
+    resize: none;
+   line-height:30px;
+   font-size: 30px;
+   line-height:40px;
+    font-family: 'Gloria Hallelujah', cursive;
+            font-style: oblique;
+	
+    border-color: #FF3855;
+    border-style: outset;
+    border-width: 3px;
+    
+    color:#FF3855;
+    
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255, 56, 85,0.3);
+  font-size: 30px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(255, 56, 85,0.3);
+  font-size: 30px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(255, 56, 85,0.3);
+  font-size: 30px;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color:rgba(255, 56, 85,0.3);
+  font-size: 30px;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(72,72,72,2); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(255, 56, 85,2); 
+}
+        </style>
+    </head>
+    <body>
+        <div id="heading">
+           <header><h1 class="mrg">Voice Me</h1></header>
+            
+        </div>
+        
+        <div>
+            <textarea id="inpt" placeholder="Enter Text Here...."></textarea>
+            <button id="play"  class='the-btns2'><span class="glyphicon glyphicon-play size2 " aria-hidden="true"></span></button>
+            <a href="pg2.html">   <button id="quick" class="the-btns2"><span class="glyphicon glyphicon-bullhorn size2" aria-hidden="true"></span></button></a>
+        </div>
+        
+        
+        
+        <script>
+            
+            var btn = document.getElementById("play");
+            
+            btn.addEventListener("click",play_btn);
+            
+            
+            
+            function play_btn(){
+            var msg = new SpeechSynthesisUtterance();
+            var hey = document.getElementById("inpt").value;
+var voices = window.speechSynthesis.getVoices();
+msg.voice = voices[3]; // Note: some voices don't support altering params
+msg.voiceURI = 'native';
+msg.volume = 1; // 0 to 1
+msg.rate = 0.7; // 0.1 to 10
+msg.pitch = 0.7; //0 to 2
+msg.text = hey;
+
+msg.onend = function(e) {
+  console.log('Finished in ' + event.elapsedTime + ' seconds.');
+};
+speechSynthesis.speak(msg);
+            }   
+            </script>
+             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>
